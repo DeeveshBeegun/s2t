@@ -13,11 +13,10 @@
         <dependency>
             <groupId>com.alphacephei</groupId>
             <artifactId>vosk</artifactId>
-            <version>0.3.45</version>
+            <version>0.3.38</version>
         </dependency>
     </dependencies>
    
-
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>

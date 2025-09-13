@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.service.ChatService;
+import org.example.service.PromptChatService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +15,15 @@ public class ChatController {
     private final ChatClient openaiChatClient;
     private final ChatClient ollamaChatClient;
     private final ChatService chatService;
+    private final PromptChatService promptChatService;
 
     public ChatController(@Qualifier("openaiChatClient") ChatClient openaiChatClient,
-                          @Qualifier("ollamaChatClient") ChatClient ollamaChatClient, ChatService chatService) {
+                          @Qualifier("ollamaChatClient") ChatClient ollamaChatClient, ChatService chatService
+    , PromptChatService promptChatService) {
          this.openaiChatClient = openaiChatClient;
          this.ollamaChatClient = ollamaChatClient;
          this.chatService = chatService;
+         this.promptChatService = promptChatService;
     }
 
     @GetMapping("/extract")
@@ -34,5 +38,10 @@ public class ChatController {
     @PostMapping("/addItem")
     public String addItemToChatMemory(@RequestParam String item) {
         return chatService.addItemAndFetchHistory(item);
+    }
+
+    @PostMapping("/addChat")
+    public String addChatToMemory(@RequestParam String chat) {
+        return promptChatService.addItemAndFetchHistory(chat);
     }
 }

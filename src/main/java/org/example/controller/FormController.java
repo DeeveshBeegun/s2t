@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import org.example.BirdFormDetails;
 import org.example.service.FormExtractorService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ public class FormController {
     }
 
      @PostMapping("/extract")
-     public BirdFormDetails extractData(@RequestBody String text) {
+     public String extractData(@RequestBody String text) {
          return formExtractorService.extractForm(text);
      }
 

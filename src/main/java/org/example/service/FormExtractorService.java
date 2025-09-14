@@ -33,9 +33,9 @@ public class FormExtractorService {
 
         Prompt prompt = promptTemplate.create(Map.of("inputText", inputText));
 
-        //return new databind.ObjectMapper()
-            //.readValue(chatModel.call(prompt).getResult();, BirdFormDetails);
-            return "HELLO";
+        return chatClient.prompt(prompt)
+                .call()
+                .content();
     }
 	
 }

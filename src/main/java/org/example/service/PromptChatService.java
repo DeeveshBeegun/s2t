@@ -4,13 +4,15 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
-import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PromptChatService {
 
     private final ChatClient chatClient;
 
-    public PromptChatService(ChatModel chatModel) {
+    public PromptChatService(OllamaChatModel chatModel) {
         ChatMemory chatMemory = new InMemoryChatMemory();
         PromptChatMemoryAdvisor memoryAdvisor = new PromptChatMemoryAdvisor(chatMemory);
         this.chatClient = ChatClient.builder(chatModel)

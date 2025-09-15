@@ -28,7 +28,7 @@ public class ChatController {
     @GetMapping("/extract")
     public String ask(@RequestParam String inputText,
                       @RequestParam(defaultValue = "ollama") String provider) {
-        return extractorService.extractForm(inputText);
+        return extractorService.extractFormData(inputText);
     }
 
     @PostMapping("/addItem")

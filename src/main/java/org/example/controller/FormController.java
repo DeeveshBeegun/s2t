@@ -15,7 +15,7 @@ public class FormController {
 
      @PostMapping("/extract")
      public String extractData(@RequestBody String text) {
-         return formExtractorService.extractForm(text);
+         return formExtractorService.extractFormData(text);
      }
 
 }
